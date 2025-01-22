@@ -1,4 +1,4 @@
-// Import prompt-sync
+
 const prompt = require('prompt-sync')();
 
 var varinput=prompt("Enter the number for var: ");
