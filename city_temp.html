@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Data</title>
+   <style>
+    body
+    {
+        text-align: center;
+    }
+   </style>
+</head>
+<body>
+    <h2>Weather Data</h2>
+    
+        City: <input type="text" id="cityname" /> <br><br>
+        <button onClick="fetchweather()">Submit</button>
+    
+    <div id="result"></div>
+    <script>
+        
+        
+       function fetchweather()
+       {
+          
+        const city = document.getElementById('cityname').value; 
+           fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b75cefeeac82fe792ba85ec8b50716d8&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                const results = document.getElementById('result');
+                results.innerHTML = `
+                        <h3>City: ${data.name}</h3>
+                        <p>Min Temp: ${data.main.temp_min} </p>
+                        <p>Max Temp: ${data.main.temp_max} </p>
+                        <p>Humidity: ${data.main.humidity} </p>
+                    `;
+        })
+        .catch(error => console.error('Error:', error));
+       }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

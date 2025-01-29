@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Data Example</title>
+</head>
+<body>
+    <h2>Weather Data</h2>
+    <table border="1" id="data-table">
+        <tr>
+            <th>City</th>
+            <th>Temperature </th>
+            <th>Humidity </th>
+        </tr>
+    </table>
+    <script>
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=b75cefeeac82fe792ba85ec8b50716d8&units=metric')
+        .then(response => response.json())
+        .then(data => {
+            let table = document.getElementById("data-table");
+            
+            let row = `<tr>
+                <td>${data.name}</td>
+                <td>${data.main.temp}</td>
+                <td>${data.main.humidity}</td>
+            </tr>`;
+            table.innerHTML += row;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
+
+/*fetch(`https://api.openweathermap.org/data/2.5/weather?q=New York&appid=YOUR_API_KEY&units=metric`)
+.then(response => response.json())
+.then(data => {
+    document.write(`<h3>City: ${data.name}</h3>`);
+    document.write(`<p>Min Temp: ${data.main.temp_min} °C</p>`);
+    document.write(`<p>Max Temp: ${data.main.temp_max} °C</p>`);
+    document.write(`<p>Humidity: ${data.main.humidity} %</p>`);
+})
+.catch(error => console.error('Error:', error));*/
