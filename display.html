@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Displaying
+        </title>
+    </head>
+    <body>
+        
+        <script>
+            function getUsers(){
+
+            
+            let xmlhttp = new XMLHttpRequest();
+           
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {  
+                    console.log( JSON.parse(this.responseText))
+                    
+                }
+            }
+
+            xmlhttp.open("GET","https://jsonplaceholder.typicode.com/users" , true);
+            xmlhttp.send();
+        }
+           getUsers();
+        </script>
+    </body>
+</html>
